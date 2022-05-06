@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+
+    <table class="table">
+        <thead>
+            <th scope="col"></th>
+            <th scope="col">symbol</th>
+            <th scope="col">shares</th>
+            <th scope="col">current price</th>
+            <th scope="col">asset value</th>
+        </thead>
+        <tbody>
+            {% set count = [1] %}
+            {% for x in stocks %}
+            <tr>
+                <th scope="row">{{ count[0] }}</th>
+                {% for value in x.values() %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% if count.append(count.pop() + 1) %}{% endif %}
+            {% endfor %}
+            <tr class="table-success">
+                <th scope="row"><bold>CASH: </bold></th>
+                <td><bold>{{ cash }}</bold></td>
+                <td colspan="3"></td>
+
+            </tr>
+            <tr class="table-success">
+                <th scope="row"><bold>TOTAL VALUE: </bold></th>
+                <td>{{ value }}</td>
+                <td colspan="3"></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

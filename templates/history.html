@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    history
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+            <th scope="col">stock</th>
+            <th scope="col">shares</th>
+            <th scope="col">date</th>
+            <th scope="col">buy or sell</th>
+        </thead>
+        <tbody>
+            {% for col in history %}
+            <tr>
+                {% for x in col.values() %}
+                <td>{{ x }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}
